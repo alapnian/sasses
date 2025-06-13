@@ -1,0 +1,71 @@
+////
+///	█▀    ▄▀█    █▀    █▀    █▀▀    █▀
+///	▄█    █▀█    ▄█    ▄█    ██▄    ▄█
+///	𝑃𝑟𝑜𝑣𝑖𝑑𝑒𝑠 𝑚𝑜𝑟𝑒 𝑎𝑑𝑣𝑎𝑛𝑐𝑒𝑑 𝑆𝑎𝑠𝑠 𝑚𝑜𝑑𝑢𝑙𝑒𝑠
+///
+///	(c)	2025 Alapnian <support@alapnian.com>
+///	</>	Powered by XVIID <alapnian@xviid.net>
+///
+///	For the full copyright and license information, please view
+///	the LICENSE file that was distributed with this source code.
+////
+
+@charset 'UTF-8'
+
+@use 'sass:list'
+@use 'sass:math'
+@use 'is-number'
+
+
+/// 
+/// Check if its a resolution value.
+/// 
+/// @param	{Void}	$value	- Value to check.
+/// @return	{Bool}	Return true if value type is resolution.
+/// 
+/// @example	scss
+/// 	@use '@alapnian/sass-modules/meta';
+/// 
+/// 	@mixin example($args...) {
+/// 	  @debug meta.is-resolution($args);								//=> false
+/// 	}
+/// 	@include example(#808080, 100rem);
+/// 	
+/// 	@debug meta.is-resolution(1);									//=> false
+/// 	@debug meta.is-resolution(1px);									//=> false
+/// 	@debug meta.is-resolution(1em);									//=> false
+/// 	@debug meta.is-resolution(1%);									//=> false
+/// 	@debug meta.is-resolution(1dpi);								//=> true
+/// 	@debug meta.is-resolution(1ms);									//=> false
+/// 	@debug meta.is-resolution(1deg);								//=> false
+/// 	@debug meta.is-resolution(1Hz);									//=> false
+/// 	@debug meta.is-resolution(0.5);									//=> false
+/// 	@debug meta.is-resolution(1 2 3);								//=> false
+/// 	@debug meta.is-resolution(top);									//=> false
+/// 	@debug meta.is-resolution(pi);									//=> false
+/// 	@debug meta.is-resolution('kHz');								//=> false
+/// 	@debug meta.is-resolution('');									//=> false
+/// 	@debug meta.is-resolution(());									//=> false
+/// 	@debug meta.is-resolution(null);								//=> false
+/// 	@debug meta.is-resolution(#fff);								//=> false
+/// 	@debug meta.is-resolution(rgb(0,0,0));								//=> false
+/// 	@debug meta.is-resolution(true);								//=> false
+/// 	@debug meta.is-resolution(calc(2/2));								//=> false
+/// 	@debug meta.is-resolution(calc(pi));								//=> false
+/// 	@debug meta.is-resolution(clamp(1rem, 2.5vw, 2rem));						//=> false
+/// 	@debug meta.is-resolution(meta.module-variables(meta));						//=> false
+/// 	@debug meta.is-resolution(meta.get-function('call', $module: meta));				//=> false
+/// 	@debug meta.is-resolution(('color':hsl(97, 98%, 77%), width: 1rem, order: 2, hover: true));	//=> false
+/// 	@debug meta.is-resolution(meta.get-mixin(example));						//=> false
+/// 
+/// @access	public
+/// @require	is-number.is-number
+/// @require	list.index
+/// @require	math.unit
+/// 
+/// @group	SassMetaModule
+/// @author	Dyon Mulya
+/// @since	1.0.0
+/// 
+@function is-resolution($value)
+	@return is-number.is-number($value) and list.index('dpi' 'dpcm' 'dppx', math.unit($value)) != null
