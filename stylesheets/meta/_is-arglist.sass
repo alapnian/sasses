@@ -1,0 +1,68 @@
+////
+///	█▀    ▄▀█    █▀    █▀    █▀▀    █▀
+///	▄█    █▀█    ▄█    ▄█    ██▄    ▄█
+///	𝑃𝑟𝑜𝑣𝑖𝑑𝑒𝑠 𝑚𝑜𝑟𝑒 𝑎𝑑𝑣𝑎𝑛𝑐𝑒𝑑 𝑆𝑎𝑠𝑠 𝑚𝑜𝑑𝑢𝑙𝑒𝑠
+///
+///	(c)	2025 Alapnian <support@alapnian.com>
+///	</>	Powered by XVIID <alapnian@xviid.net>
+///
+///	For the full copyright and license information, please view
+///	the LICENSE file that was distributed with this source code.
+////
+
+@charset 'UTF-8'
+
+@use 'sass:meta'
+
+
+/// 
+/// Check if its a argument list value.
+/// 
+/// @param	{Void}	$value	- Value to check.
+/// @return	{Bool}	Return true if value type is argument list (arglist).
+/// @return	{Bool}
+/// 
+/// @example	scss
+/// 	@use '@alapnian/sass-modules/meta';
+/// 
+/// 	@mixin example($args...) {
+/// 	  @debug meta.is-arglist($args);								//=> true
+/// 	}
+/// 	@include example(#808080, 100rem);
+/// 	
+/// 	@debug meta.is-arglist(1);									//=> false
+/// 	@debug meta.is-arglist(1px);									//=> false
+/// 	@debug meta.is-arglist(1em);									//=> false
+/// 	@debug meta.is-arglist(1%);									//=> false
+/// 	@debug meta.is-arglist(1dpi);									//=> false
+/// 	@debug meta.is-arglist(1ms);									//=> false
+/// 	@debug meta.is-arglist(1deg);									//=> false
+/// 	@debug meta.is-arglist(1Hz);									//=> false
+/// 	@debug meta.is-arglist(0.5);									//=> false
+/// 	@debug meta.is-arglist(1 2 3);									//=> false
+/// 	@debug meta.is-arglist(top);									//=> false
+/// 	@debug meta.is-arglist(pi);									//=> false
+/// 	@debug meta.is-arglist('kHz');									//=> false
+/// 	@debug meta.is-arglist('');									//=> false
+/// 	@debug meta.is-arglist(());									//=> false
+/// 	@debug meta.is-arglist(null);									//=> false
+/// 	@debug meta.is-arglist(#fff);									//=> false
+/// 	@debug meta.is-arglist(rgb(0,0,0));								//=> false
+/// 	@debug meta.is-arglist(true);									//=> false
+/// 	@debug meta.is-arglist(calc(2/2));								//=> false
+/// 	@debug meta.is-arglist(calc(pi));								//=> false
+/// 	@debug meta.is-arglist(clamp(1rem, 2.5vw, 2rem));						//=> false
+/// 	@debug meta.is-arglist(meta.module-variables(meta));						//=> false
+/// 	@debug meta.is-arglist(meta.get-function('call', $module: meta));				//=> false
+/// 	@debug meta.is-arglist(('color':hsl(97, 98%, 77%), width: 1rem, order: 2, hover: true));	//=> false
+/// 	@debug meta.is-arglist(meta.get-mixin(example));						//=> false
+/// 
+/// @access	public
+/// @require	meta.type-of
+/// 
+/// @group	SassMetaModule
+/// @author	Dyon Mulya
+/// @since	1.0.0
+/// 
+@function is-arglist($value)
+	@return meta.type-of($value) == arglist
