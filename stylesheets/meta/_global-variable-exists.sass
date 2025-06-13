@@ -1,0 +1,47 @@
+////
+///	█▀    ▄▀█    █▀    █▀    █▀▀    █▀
+///	▄█    █▀█    ▄█    ▄█    ██▄    ▄█
+///	𝑃𝑟𝑜𝑣𝑖𝑑𝑒𝑠 𝑚𝑜𝑟𝑒 𝑎𝑑𝑣𝑎𝑛𝑐𝑒𝑑 𝑆𝑎𝑠𝑠 𝑚𝑜𝑑𝑢𝑙𝑒𝑠
+///
+///	(c)	2025 Alapnian <support@alapnian.com>
+///	</>	Powered by XVIID <alapnian@xviid.net>
+///
+///	For the full copyright and license information, please view
+///	the LICENSE file that was distributed with this source code.
+////
+
+@charset 'UTF-8'
+
+@use 'sass:meta'
+
+
+/// 
+/// Returns whether a global variable named $name (without the $) exists.
+/// 
+/// @param	{String}	$name	- Global variable name.
+/// @param	{String}	$module	- Module name matching the namespace of a @use rule in the current file.
+/// @return	{Boolean}	Return true if global variable exist.
+/// 
+/// @example	scss
+/// 	@use '@alapnian/sass-modules/meta';
+/// 
+/// 	@debug meta.global-variable-exists("var1");	//=> false
+/// 	
+/// 	$var1: value;
+/// 	@debug meta.global-variable-exists("var1");	//=> true
+/// 	
+/// 	h1 {
+/// 	   $var2: value;
+/// 	   @debug meta.global-variable-exists("var2");	//=> false
+/// 	}
+/// 
+/// @access	public
+/// @require	meta.global-variable-exists
+/// 
+/// @group	SassMetaModule
+/// @author	Dyon Mulya
+/// @since	1.0.0
+/// 
+@function global-variable-exists($name, $module: null)
+
+	@return meta.global-variable-exists($name, $module)
