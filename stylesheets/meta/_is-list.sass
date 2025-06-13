@@ -1,0 +1,67 @@
+////
+///	█▀    ▄▀█    █▀    █▀    █▀▀    █▀
+///	▄█    █▀█    ▄█    ▄█    ██▄    ▄█
+///	𝑃𝑟𝑜𝑣𝑖𝑑𝑒𝑠 𝑚𝑜𝑟𝑒 𝑎𝑑𝑣𝑎𝑛𝑐𝑒𝑑 𝑆𝑎𝑠𝑠 𝑚𝑜𝑑𝑢𝑙𝑒𝑠
+///
+///	(c)	2025 Alapnian <support@alapnian.com>
+///	</>	Powered by XVIID <alapnian@xviid.net>
+///
+///	For the full copyright and license information, please view
+///	the LICENSE file that was distributed with this source code.
+////
+
+@charset 'UTF-8'
+
+@use 'sass:meta'
+
+
+/// 
+/// Check if its a list value.
+/// 
+/// @param	{Void}	$value	- Value to check.
+/// @return	{Bool}	Return true if value type is list.
+/// 
+/// @example	scss
+/// 	@use '@alapnian/sass-modules/meta';
+/// 
+/// 	@mixin example($args...) {
+/// 	  @debug meta.is-list($args);								//=> false
+/// 	}
+/// 	@include example(#808080, 100rem);
+/// 	
+/// 	@debug meta.is-list(1);									//=> false
+/// 	@debug meta.is-list(1px);								//=> false
+/// 	@debug meta.is-list(1em);								//=> false
+/// 	@debug meta.is-list(1%);								//=> false
+/// 	@debug meta.is-list(1dpi);								//=> false
+/// 	@debug meta.is-list(1ms);								//=> false
+/// 	@debug meta.is-list(1deg);								//=> false
+/// 	@debug meta.is-list(1Hz);								//=> false
+/// 	@debug meta.is-list(0.5);								//=> false
+/// 	@debug meta.is-list(1 2 3);								//=> true
+/// 	@debug meta.is-list(top);								//=> false
+/// 	@debug meta.is-list(pi);								//=> false
+/// 	@debug meta.is-list('kHz');								//=> false
+/// 	@debug meta.is-list('');								//=> false
+/// 	@debug meta.is-list(());								//=> true
+/// 	@debug meta.is-list(null);								//=> false
+/// 	@debug meta.is-list(#fff);								//=> false
+/// 	@debug meta.is-list(rgb(0,0,0));							//=> false
+/// 	@debug meta.is-list(true);								//=> false
+/// 	@debug meta.is-list(calc(2/2));								//=> false
+/// 	@debug meta.is-list(calc(pi));								//=> false
+/// 	@debug meta.is-list(clamp(1rem, 2.5vw, 2rem));						//=> false
+/// 	@debug meta.is-list(meta.module-variables(meta));					//=> false
+/// 	@debug meta.is-list(meta.get-function('call', $module: meta));				//=> false
+/// 	@debug meta.is-list(('color':hsl(97, 98%, 77%), width: 1rem, order: 2, hover: true));	//=> false
+/// 	@debug meta.is-list(meta.get-mixin(example));						//=> false
+/// 
+/// @access	public
+/// @require	meta.type-of
+/// 
+/// @group	SassMetaModule
+/// @author	Dyon Mulya
+/// @since	1.0.0
+/// 
+@function is-list($value)
+	@return meta.type-of($value) == list
