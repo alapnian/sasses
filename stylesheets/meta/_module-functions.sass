@@ -1,0 +1,50 @@
+////
+///	█▀    ▄▀█    █▀    █▀    █▀▀    █▀
+///	▄█    █▀█    ▄█    ▄█    ██▄    ▄█
+///	𝑃𝑟𝑜𝑣𝑖𝑑𝑒𝑠 𝑚𝑜𝑟𝑒 𝑎𝑑𝑣𝑎𝑛𝑐𝑒𝑑 𝑆𝑎𝑠𝑠 𝑚𝑜𝑑𝑢𝑙𝑒𝑠
+///
+///	(c)	2025 Alapnian <support@alapnian.com>
+///	</>	Powered by XVIID <alapnian@xviid.net>
+///
+///	For the full copyright and license information, please view
+///	the LICENSE file that was distributed with this source code.
+////
+
+@charset 'UTF-8'
+
+@use 'sass:meta'
+
+
+/// 
+/// Returns all the functions defined in a module, as a map from function names to function values.
+/// 
+/// @param	{String}	$module	- Module name matching the namespace of a @use rule in the current file.
+/// @return	{Map}		Returns all the functions defined in a module, as a map from function names to function values.
+/// 
+/// @example	scss - Create _functions.scss
+/// 	@function pow($base, $exponent) {
+/// 	   $result: 1;
+/// 	   @for $_ from 1 through $exponent {
+/// 	     $result: $result * $base;
+/// 	   }
+/// 	   @return $result;
+/// 	}
+/// 	
+/// @example	scss
+/// 	@use 'sass:map';
+/// 	@use '@alapnian/sass-modules/meta';
+/// 	@use 'functions';
+/// 	
+/// 	@debug meta.module-functions("functions");					//=> ("pow": get-function("pow"))
+/// 	@debug meta.call(map.get(meta.module-functions("functions"), "pow"), 3, 4);	//=> 81
+/// 
+/// @access	public
+/// @require	meta.module-functions
+/// 
+/// @group	SassMetaModule
+/// @author	Dyon Mulya
+/// @since	1.0.0
+/// 
+@function module-functions($module)
+
+	@return meta.module-functions($module)
