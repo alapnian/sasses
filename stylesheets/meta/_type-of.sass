@@ -1,0 +1,38 @@
+////
+///	█▀    ▄▀█    █▀    █▀    █▀▀    █▀
+///	▄█    █▀█    ▄█    ▄█    ██▄    ▄█
+///	𝑃𝑟𝑜𝑣𝑖𝑑𝑒𝑠 𝑚𝑜𝑟𝑒 𝑎𝑑𝑣𝑎𝑛𝑐𝑒𝑑 𝑆𝑎𝑠𝑠 𝑚𝑜𝑑𝑢𝑙𝑒𝑠
+///
+///	(c)	2025 Alapnian <support@alapnian.com>
+///	</>	Powered by XVIID <alapnian@xviid.net>
+///
+///	For the full copyright and license information, please view
+///	the LICENSE file that was distributed with this source code.
+////
+
+@charset 'UTF-8'
+
+@use 'sass:meta'
+
+
+/// 
+/// Returns the type of $value.
+/// 
+/// @param	{*}		$value	- Value for check type.
+/// @return	{String}	Returns the type of $value.
+/// 
+/// @example	scss
+/// 	@debug meta.type-of(10px);		//=> number
+/// 	@debug meta.type-of(10px 20px 30px);	//=> list
+/// 	@debug meta.type-of(());		//=> list
+/// 
+/// @access	public
+/// @require	meta.type-of
+/// 
+/// @group	SassMetaModule
+/// @author	Dyon Mulya
+/// @since	1.0.0
+/// 
+@function type-of($value)
+
+	@return meta.type-of($value)
