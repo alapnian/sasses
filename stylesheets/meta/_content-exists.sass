@@ -1,0 +1,45 @@
+////
+///	█▀    ▄▀█    █▀    █▀    █▀▀    █▀
+///	▄█    █▀█    ▄█    ▄█    ██▄    ▄█
+///	𝑃𝑟𝑜𝑣𝑖𝑑𝑒𝑠 𝑚𝑜𝑟𝑒 𝑎𝑑𝑣𝑎𝑛𝑐𝑒𝑑 𝑆𝑎𝑠𝑠 𝑚𝑜𝑑𝑢𝑙𝑒𝑠
+///
+///	(c)	2025 Alapnian <support@alapnian.com>
+///	</>	Powered by XVIID <alapnian@xviid.net>
+///
+///	For the full copyright and license information, please view
+///	the LICENSE file that was distributed with this source code.
+////
+
+@charset 'UTF-8'
+
+@use 'sass:meta'
+
+
+/// 
+/// Returns whether the current mixin was passed a @content block.
+/// 
+/// @return	{Boolean}	Returns whether the current mixin was passed a @content block.
+/// 
+/// @example	scss
+/// 	@use '@alapnian/sass-modules/meta';
+/// 
+/// 	@mixin debug-content-exists {
+/// 	   @debug meta.content-exists();
+/// 	   @content;
+/// 	}
+/// 	
+/// 	@include debug-content-exists; // false
+/// 	@include debug-content-exists { // true
+/// 	   // Your content!
+/// 	}
+/// 
+/// @access	public
+/// @require	meta.content-exists
+/// 
+/// @group	SassMetaModule
+/// @author	Dyon Mulya
+/// @since	1.0.0
+/// 
+@function content-exists()
+
+	@return meta.content-exists()
