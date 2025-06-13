@@ -1,0 +1,64 @@
+////
+///	█▀    ▄▀█    █▀    █▀    █▀▀    █▀
+///	▄█    █▀█    ▄█    ▄█    ██▄    ▄█
+///	𝑃𝑟𝑜𝑣𝑖𝑑𝑒𝑠 𝑚𝑜𝑟𝑒 𝑎𝑑𝑣𝑎𝑛𝑐𝑒𝑑 𝑆𝑎𝑠𝑠 𝑚𝑜𝑑𝑢𝑙𝑒𝑠
+///
+///	(c)	2025 Alapnian <support@alapnian.com>
+///	</>	Powered by XVIID <alapnian@xviid.net>
+///
+///	For the full copyright and license information, please view
+///	the LICENSE file that was distributed with this source code.
+////
+
+@charset 'UTF-8'
+
+@use 'sass:meta'
+
+
+/// 
+/// Invokes $function with $args and returns the result.
+/// 
+/// @param	{Function}	$function	- Function value.
+/// @param	{ArgList}	$args	- Parameter function argument.
+/// @return	{Function}	Returns the name of the given calculation.
+/// 
+/// @example	scss
+/// 	@use 'sass:list';
+/// 	@use 'sass:string';
+/// 	@use '@alapnian/sass-modules/meta';
+/// 
+/// 	@function remove-where($list, $condition) {
+/// 	   $new-list: ();
+/// 	   $separator: list.separator($list);
+/// 	   @each $element in $list {
+/// 	      @if not meta.call($condition, $element) {
+/// 	         $new-list: list.append($new-list, $element, $separator: $separator);
+/// 	      }
+/// 	   }
+/// 	   @return $new-list;
+/// 	}
+/// 	
+/// 	$fonts: Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
+/// 	
+/// 	.content {
+/// 	   @function contains-helvetica($string) {
+/// 	      @return string.index($string, "Helvetica");
+/// 	   }
+/// 	   font-family: remove-where($fonts, meta.get-function("contains-helvetica"));
+/// 	}
+/// 
+/// @example	css Output
+/// 	.content {
+/// 	   font-family: Tahoma, Geneva, Arial, sans-serif;
+/// 	}
+/// 
+/// @access	public
+/// @require	meta.call
+/// 
+/// @group	SassMetaModule
+/// @author	Dyon Mulya
+/// @since	1.0.0
+/// 
+@function call($function, $args...)
+
+	@return meta.call($function, $args)
