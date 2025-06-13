@@ -1,0 +1,81 @@
+////
+///	█▀    ▄▀█    █▀    █▀    █▀▀    █▀
+///	▄█    █▀█    ▄█    ▄█    ██▄    ▄█
+///	𝑃𝑟𝑜𝑣𝑖𝑑𝑒𝑠 𝑚𝑜𝑟𝑒 𝑎𝑑𝑣𝑎𝑛𝑐𝑒𝑑 𝑆𝑎𝑠𝑠 𝑚𝑜𝑑𝑢𝑙𝑒𝑠
+///
+///	(c)	2025 Alapnian <support@alapnian.com>
+///	</>	Powered by XVIID <alapnian@xviid.net>
+///
+///	For the full copyright and license information, please view
+///	the LICENSE file that was distributed with this source code.
+////
+
+@charset 'UTF-8'
+
+@use 'sass:meta'
+
+
+/// 
+/// Includes $mixin with $args. If this is passed a @content block, it’s forwarded to $mixin.
+/// 
+/// @param	{Function}	$mixin	- Mixin value with meta.get-mixin().
+/// @param	{ArgList}	$args	- Parameter argument mixin value.
+/// @output	Includes $mixin with $args.
+/// 
+/// @example	scss - Create _apply-to-all.scss
+/// 	@use '@alapnian/sass-modules/meta';
+/// 
+/// 	@mixin apply-to-all($mixin, $list) {
+/// 	   @each $element in $list {
+/// 	     @include meta.apply($mixin, $element);
+/// 	   }
+/// 	}
+///
+/// 	@mixin font-class($size) {
+/// 	   .font-#{$size} {
+/// 	      font-size: $size;
+/// 	   }
+/// 	}
+/// 
+/// 	$sizes: [8px, 12px, 2rem];
+/// 
+/// 	@include apply-to-all(meta.get-mixin("font-class"), $sizes);
+/// 
+/// @example	css - CSS Output from _apply-to-all.scss
+/// 	.font-8px {
+/// 	   font-size: 8px;
+/// 	}
+/// 	.font-12px {
+/// 	   font-size: 12px;
+/// 	}
+/// 	.font-2rem {
+/// 	   font-size: 2rem;
+/// 	}
+/// 
+/// @access	public
+/// @require	meta.apply
+/// 
+/// @group	SassMetaModule
+/// @author	Dyon Mulya
+/// @since	1.0.0
+/// 
+@mixin apply($mixin, $args...)
+
+	@include meta.apply($mixin, $args)
+
+
+/// 
+/// Alias meta.apply mixin on meta module
+/// 
+/// @alias	apply
+/// 
+/// @access	public
+/// @require	meta.apply
+/// 
+/// @group	SassMetaModule
+/// @author	Dyon Mulya
+/// @since	1.0.0
+/// 
+@mixin apply-mixin($mixin, $args...)
+
+	@include apply($mixin, $args)
