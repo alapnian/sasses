@@ -1,0 +1,48 @@
+////
+///	█▀    ▄▀█    █▀    █▀    █▀▀    █▀
+///	▄█    █▀█    ▄█    ▄█    ██▄    ▄█
+///	𝑃𝑟𝑜𝑣𝑖𝑑𝑒𝑠 𝑚𝑜𝑟𝑒 𝑎𝑑𝑣𝑎𝑛𝑐𝑒𝑑 𝑆𝑎𝑠𝑠 𝑚𝑜𝑑𝑢𝑙𝑒𝑠
+///
+///	(c)	2025 Alapnian <support@alapnian.com>
+///	</>	Powered by XVIID <alapnian@xviid.net>
+///
+///	For the full copyright and license information, please view
+///	the LICENSE file that was distributed with this source code.
+////
+
+@charset 'UTF-8'
+
+@use 'sass:meta'
+
+
+/// 
+/// Returns whether the given mixin value can accept a @content block.
+/// 
+/// @param	{Function}	$mixin	- Mixin value.
+/// @return	{Boolean}	This returns true if it’s possible for the mixin to accept a @content block, even if it doesn’t always do so.
+/// 
+/// @example scss
+/// 	@use '@alapnian/sass-modules/meta';
+/// 	
+/// 	@mixin btn-default($color){
+/// 	   border: $color;
+/// 	   color: $color;
+/// 	   background-color: transparent;
+/// 	}
+/// 	
+/// 	@mixin btn-custom(){
+/// 	   @content;
+/// 	}
+/// 	
+/// 	@debug meta.accepts-content(meta.get-mixin(btn-custom));	//=> true
+/// 	@debug meta.accepts-content(meta.get-mixin(btn-default));	//=> false
+/// 
+/// @access	public
+/// @require	meta.accepts-content
+/// 
+/// @group	SassMetaModule
+/// @author	Dyon Mulya
+/// @since	1.0.0
+@function accepts-content($mixin)
+    
+	@return meta.accepts-content($mixin)
