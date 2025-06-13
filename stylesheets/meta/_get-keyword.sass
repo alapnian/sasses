@@ -1,0 +1,55 @@
+////
+///	█▀    ▄▀█    █▀    █▀    █▀▀    █▀
+///	▄█    █▀█    ▄█    ▄█    ██▄    ▄█
+///	𝑃𝑟𝑜𝑣𝑖𝑑𝑒𝑠 𝑚𝑜𝑟𝑒 𝑎𝑑𝑣𝑎𝑛𝑐𝑒𝑑 𝑆𝑎𝑠𝑠 𝑚𝑜𝑑𝑢𝑙𝑒𝑠
+///
+///	(c)	2025 Alapnian <support@alapnian.com>
+///	</>	Powered by XVIID <alapnian@xviid.net>
+///
+///	For the full copyright and license information, please view
+///	the LICENSE file that was distributed with this source code.
+////
+
+@charset 'UTF-8'
+
+@use 'sass:meta'
+@use 'sass:map'
+
+
+/// 
+/// Gets the value of the named parameter from the given argument list, otherwise providing a default value.
+/// 
+/// @param	{!ArgList}	$args		- The argument list from which to get the named parameter.
+/// @param	{String}	$name		- The name of the parameter to get.
+/// @param	{*}		$default [null]	- The value of the parameter when not contained in the argument list.
+/// @return	{*}				The value of the named parameter when it exists; otherwise, the given default value.
+/// 
+/// @example	scss
+/// 	@use '@alapnian/sass-modules/meta';
+/// 	
+/// 	@mixin my-mixin($args...) {
+/// 	  @debug meta.get-keyword($args, 'string');		//=> #080
+/// 	  @debug meta.get-keyword($args, 'delete');		//=> null
+/// 	  @debug meta.get-keyword($args, 'delete', yellow);	//=> yellow
+/// 	}
+/// 	
+/// 	@include my-mixin(
+/// 	  $string: #080,
+/// 	  $comment: #800,
+/// 	  $variable: #60b,
+/// 	);
+/// 
+/// @access	public
+/// @require	meta.keywords
+/// @require	map.has-key
+/// @require	map.get
+/// 
+/// @group	SassMetaModule
+/// @author	Dyon Mulya
+/// @since	1.0.0
+/// 
+@function get-keyword($args, $name, $default: null)
+
+	$args: meta.keywords($args)
+
+	@return if(map.has-key($args, $name), map.get($args, $name), $default)
