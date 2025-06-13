@@ -1,0 +1,67 @@
+////
+///	█▀    ▄▀█    █▀    █▀    █▀▀    █▀
+///	▄█    █▀█    ▄█    ▄█    ██▄    ▄█
+///	𝑃𝑟𝑜𝑣𝑖𝑑𝑒𝑠 𝑚𝑜𝑟𝑒 𝑎𝑑𝑣𝑎𝑛𝑐𝑒𝑑 𝑆𝑎𝑠𝑠 𝑚𝑜𝑑𝑢𝑙𝑒𝑠
+///
+///	(c)	2025 Alapnian <support@alapnian.com>
+///	</>	Powered by XVIID <alapnian@xviid.net>
+///
+///	For the full copyright and license information, please view
+///	the LICENSE file that was distributed with this source code.
+////
+
+@charset 'UTF-8'
+
+@use 'sass:meta'
+
+
+/// 
+/// Check if its a function value.
+/// 
+/// @param	{Void}	$value	- Value to check.
+/// @return	{Bool}	Return true if value type is function.
+/// 
+/// @example	scss
+/// 	@use '@alapnian/sass-modules/meta';
+/// 
+/// 	@mixin example($args...) {
+/// 	  @debug meta.is-function($args);								//=> false
+/// 	}
+/// 	@include example(#808080, 100rem);
+/// 	
+/// 	@debug meta.is-function(1);									//=> false
+/// 	@debug meta.is-function(1px);									//=> false
+/// 	@debug meta.is-function(1em);									//=> false
+/// 	@debug meta.is-function(1%);									//=> false
+/// 	@debug meta.is-function(1dpi);									//=> false
+/// 	@debug meta.is-function(1ms);									//=> false
+/// 	@debug meta.is-function(1deg);									//=> false
+/// 	@debug meta.is-function(1Hz);									//=> false
+/// 	@debug meta.is-function(0.5);									//=> false
+/// 	@debug meta.is-function(1 2 3);									//=> false
+/// 	@debug meta.is-function(top);									//=> false
+/// 	@debug meta.is-function(pi);									//=> false
+/// 	@debug meta.is-function('kHz');									//=> false
+/// 	@debug meta.is-function('');									//=> false
+/// 	@debug meta.is-function(());									//=> false
+/// 	@debug meta.is-function(null);									//=> false
+/// 	@debug meta.is-function(#fff);									//=> false
+/// 	@debug meta.is-function(rgb(0,0,0));								//=> false
+/// 	@debug meta.is-function(true);									//=> false
+/// 	@debug meta.is-function(calc(2/2));								//=> false
+/// 	@debug meta.is-function(calc(pi));								//=> false
+/// 	@debug meta.is-function(clamp(1rem, 2.5vw, 2rem));						//=> false
+/// 	@debug meta.is-function(meta.module-variables(meta));						//=> false
+/// 	@debug meta.is-function(meta.get-function('call', $module: meta));				//=> true
+/// 	@debug meta.is-function(('color':hsl(97, 98%, 77%), width: 1rem, order: 2, hover: true));	//=> false
+/// 	@debug meta.is-function(meta.get-mixin(example));						//=> false
+/// 
+/// @access	public
+/// @require	meta.type-of
+/// 
+/// @group	SassMetaModule
+/// @author	Dyon Mulya
+/// @since	1.0.0
+/// 
+@function is-function($value)
+	@return meta.type-of($value) == function
