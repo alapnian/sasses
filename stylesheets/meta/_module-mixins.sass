@@ -1,0 +1,51 @@
+////
+///	█▀    ▄▀█    █▀    █▀    █▀▀    █▀
+///	▄█    █▀█    ▄█    ▄█    ██▄    ▄█
+///	𝑃𝑟𝑜𝑣𝑖𝑑𝑒𝑠 𝑚𝑜𝑟𝑒 𝑎𝑑𝑣𝑎𝑛𝑐𝑒𝑑 𝑆𝑎𝑠𝑠 𝑚𝑜𝑑𝑢𝑙𝑒𝑠
+///
+///	(c)	2025 Alapnian <support@alapnian.com>
+///	</>	Powered by XVIID <alapnian@xviid.net>
+///
+///	For the full copyright and license information, please view
+///	the LICENSE file that was distributed with this source code.
+////
+
+@charset 'UTF-8'
+
+@use 'sass:meta'
+
+
+/// 
+/// Returns all the mixins defined in a module, as a map from mixin names to mixin values.
+/// 
+/// @param	{String}	$module	- Module name matching the namespace of a @use rule in the current file.
+/// @return	{Map}		Returns all the mixins defined in a module, as a map from mixin names to mixin values.
+/// 
+/// @example	scss - Create _mixins.scss
+/// 	@mixin stretch() {
+/// 	   align-items: stretch;
+/// 	   display: flex;
+/// 	   flex-direction: row;
+/// 	}
+/// 	
+/// @example	scss
+/// 	@use 'sass:map';
+/// 	@use '@alapnian/sass-modules/meta';
+/// 	@use 'mixins';
+/// 	
+/// 	@debug meta.module-mixins("mixins");	// => ("stretch": get-mixin("stretch"))
+/// 	
+/// 	.header {
+/// 	   @include meta.apply(map.get(meta.module-mixins("mixins"), "stretch"));
+/// 	}
+/// 
+/// @access	public
+/// @require	meta.module-mixins
+/// 
+/// @group	SassMetaModule
+/// @author	Dyon Mulya
+/// @since	1.0.0
+/// 
+@function module-mixins($module)
+
+	@return meta.module-mixins($module)
