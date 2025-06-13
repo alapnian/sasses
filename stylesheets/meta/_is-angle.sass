@@ -1,0 +1,71 @@
+////
+///	█▀    ▄▀█    █▀    █▀    █▀▀    █▀
+///	▄█    █▀█    ▄█    ▄█    ██▄    ▄█
+///	𝑃𝑟𝑜𝑣𝑖𝑑𝑒𝑠 𝑚𝑜𝑟𝑒 𝑎𝑑𝑣𝑎𝑛𝑐𝑒𝑑 𝑆𝑎𝑠𝑠 𝑚𝑜𝑑𝑢𝑙𝑒𝑠
+///
+///	(c)	2025 Alapnian <support@alapnian.com>
+///	</>	Powered by XVIID <alapnian@xviid.net>
+///
+///	For the full copyright and license information, please view
+///	the LICENSE file that was distributed with this source code.
+////
+
+@charset 'UTF-8'
+
+@use 'sass:list'
+@use 'sass:math'
+@use 'is-number'
+
+
+/// 
+/// Check if its a angle value.
+/// 
+/// @param	{Void}	$value	- Value to check.
+/// @return	{Bool}	Return true if value is angle.
+/// 
+/// @example	scss
+/// 	@use '@alapnian/sass-modules/meta';
+/// 
+/// 	@mixin example($args...) {
+/// 	  @debug meta.is-angle($args);								//=> false
+/// 	}
+/// 	@include example(#808080, 100rem);
+/// 	
+/// 	@debug meta.is-angle(1);								//=> false
+/// 	@debug meta.is-angle(1px);								//=> false
+/// 	@debug meta.is-angle(1em);								//=> false
+/// 	@debug meta.is-angle(1%);								//=> false
+/// 	@debug meta.is-angle(1dpi);								//=> false
+/// 	@debug meta.is-angle(1ms);								//=> false
+/// 	@debug meta.is-angle(1deg);								//=> true
+/// 	@debug meta.is-angle(1Hz);								//=> false
+/// 	@debug meta.is-angle(0.5);								//=> false
+/// 	@debug meta.is-angle(1 2 3);								//=> false
+/// 	@debug meta.is-angle(top);								//=> false
+/// 	@debug meta.is-angle(pi);								//=> false
+/// 	@debug meta.is-angle('kHz');								//=> false
+/// 	@debug meta.is-angle('');								//=> false
+/// 	@debug meta.is-angle(());								//=> false
+/// 	@debug meta.is-angle(null);								//=> false
+/// 	@debug meta.is-angle(#fff);								//=> false
+/// 	@debug meta.is-angle(rgb(0,0,0));							//=> false
+/// 	@debug meta.is-angle(true);								//=> false
+/// 	@debug meta.is-angle(calc(2/2));							//=> false
+/// 	@debug meta.is-angle(calc(pi));								//=> false
+/// 	@debug meta.is-angle(clamp(1rem, 2.5vw, 2rem));						//=> false
+/// 	@debug meta.is-angle(meta.module-variables(meta));					//=> false
+/// 	@debug meta.is-angle(meta.get-function('call', $module: meta));				//=> false
+/// 	@debug meta.is-angle(('color':hsl(97, 98%, 77%), width: 1rem, order: 2, hover: true));	//=> false
+/// 	@debug meta.is-angle(meta.get-mixin(example));						//=> false
+/// 
+/// @access	public
+/// @require	is-number.is-number
+/// @require	list.index
+/// @require	math.unit
+/// 
+/// @group	SassMetaModule
+/// @author	Dyon Mulya
+/// @since	1.0.0
+/// 
+@function is-angle($value)
+	@return is-number.is-number($value) and list.index('deg' 'rad' 'grad' 'turn', math.unit($value)) != null
