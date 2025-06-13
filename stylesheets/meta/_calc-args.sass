@@ -1,0 +1,40 @@
+////
+///	
+///	█▀ ▄▀█ █▀ █▀   █▀▄▀█ █▀█ █▀▄ █░█ █░░ █▀▀ █▀
+///	▄█ █▀█ ▄█ ▄█   █░▀░█ █▄█ █▄▀ █▄█ █▄▄ ██▄ ▄█
+///		𝑏𝑦 𝑨𝒍𝒂𝒑𝒏𝒊𝒂𝒏 (https://alapnian.com/)
+///
+///	(c)  2025 Alapnian <support@alapnian.com>
+///	</>  Powered by XVIID <alapnian@xviid.net>
+///
+///	For the full copyright and license information, please view
+///	the LICENSE file that was distributed with this source code.
+////
+
+@charset 'UTF-8'
+
+@use 'sass:meta'
+
+
+/// 
+/// Returns the arguments for the given calculation.
+/// 
+/// @param	{Calculation}	$calc	- Represents the calc() function, as well as similar functions like clamp(), min(), and max().
+/// @return	{List}		If an argument is a number or a nested calculation, it’s returned as that type. Otherwise, it’s returned as an unquoted string.
+/// 
+/// @example	scss
+/// 	@use '@alapnian/sass-modules/meta';
+/// 
+/// 	@debug meta.calc-args(calc(100px + 10%));			//=> unquote("100px + 10%")
+/// 	@debug meta.calc-args(clamp(50px, var(--width), 1000px));	//=> 50px, unquote("var(--width)"), 1000px
+/// 
+/// @access	public
+/// @require	meta.calc-args
+/// 
+/// @group	SassMetaModule
+/// @author	Dyon Mulya
+/// @since	1.0.0
+/// 
+@function calc-args($calc)
+
+	@return meta.calc-args($calc)
