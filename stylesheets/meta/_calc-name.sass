@@ -1,0 +1,39 @@
+////
+///	█▀    ▄▀█    █▀    █▀    █▀▀    █▀
+///	▄█    █▀█    ▄█    ▄█    ██▄    ▄█
+///	𝑃𝑟𝑜𝑣𝑖𝑑𝑒𝑠 𝑚𝑜𝑟𝑒 𝑎𝑑𝑣𝑎𝑛𝑐𝑒𝑑 𝑆𝑎𝑠𝑠 𝑚𝑜𝑑𝑢𝑙𝑒𝑠
+///
+///	(c)	2025 Alapnian <support@alapnian.com>
+///	</>	Powered by XVIID <alapnian@xviid.net>
+///
+///	For the full copyright and license information, please view
+///	the LICENSE file that was distributed with this source code.
+////
+
+@charset 'UTF-8'
+
+@use 'sass:meta'
+
+
+/// 
+/// Returns the name of the given calculation.
+/// 
+/// @param	{Calculation}	$calc	- Represents the calc() function, as well as similar functions like clamp(), min(), and max().
+/// @return	{List}		Returns the name of the given calculation.
+/// 
+/// @example	scss
+/// 	@use '@alapnian/sass-modules/meta';
+/// 
+/// 	@debug meta.calc-name(calc(100px + 10%));			//=> "calc"
+/// 	@debug meta.calc-name(clamp(50px, var(--width), 1000px));	//=> "clamp"
+/// 
+/// @access	public
+/// @require	meta.calc-name
+/// 
+/// @group	SassMetaModule
+/// @author	Dyon Mulya
+/// @since	1.0.0
+/// 
+@function calc-name($calc)
+
+	@return meta.calc-name($calc)
