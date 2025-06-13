@@ -1,0 +1,39 @@
+////
+///	█▀    ▄▀█    █▀    █▀    █▀▀    █▀
+///	▄█    █▀█    ▄█    ▄█    ██▄    ▄█
+///	𝑃𝑟𝑜𝑣𝑖𝑑𝑒𝑠 𝑚𝑜𝑟𝑒 𝑎𝑑𝑣𝑎𝑛𝑐𝑒𝑑 𝑆𝑎𝑠𝑠 𝑚𝑜𝑑𝑢𝑙𝑒𝑠
+///
+///	(c)	2025 Alapnian <support@alapnian.com>
+///	</>	Powered by XVIID <alapnian@xviid.net>
+///
+///	For the full copyright and license information, please view
+///	the LICENSE file that was distributed with this source code.
+////
+
+@charset 'UTF-8'
+
+@use 'sass:meta'
+
+
+/// 
+/// Returns a string representation of $value.
+/// 
+/// @param	{*}		$value	- Value for inspect.
+/// @return	{String}	Returns a representation of any Sass value, not just those that can be represented in CSS. As such, its return value is not guaranteed to be valid CSS.
+/// 
+/// @example	scss
+/// 	@debug meta.inspect(10px 20px 30px);	//=> unquote("10px 20px 30px")
+/// 	@debug meta.inspect(("width": 200px));	//=> unquote('("width": 200px)')
+/// 	@debug meta.inspect(null);		//=> unquote("null")
+/// 	@debug meta.inspect("Helvetica");	//=> unquote('"Helvetica"')
+/// 
+/// @access	public
+/// @require	meta.inspect
+/// 
+/// @group	SassMetaModule
+/// @author	Dyon Mulya
+/// @since	1.0.0
+/// 
+@function inspect($value)
+
+	@return meta.inspect($value)
