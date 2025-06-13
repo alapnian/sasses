@@ -1,0 +1,69 @@
+////
+///	█▀    ▄▀█    █▀    █▀    █▀▀    █▀
+///	▄█    █▀█    ▄█    ▄█    ██▄    ▄█
+///	𝑃𝑟𝑜𝑣𝑖𝑑𝑒𝑠 𝑚𝑜𝑟𝑒 𝑎𝑑𝑣𝑎𝑛𝑐𝑒𝑑 𝑆𝑎𝑠𝑠 𝑚𝑜𝑑𝑢𝑙𝑒𝑠
+///
+///	(c)	2025 Alapnian <support@alapnian.com>
+///	</>	Powered by XVIID <alapnian@xviid.net>
+///
+///	For the full copyright and license information, please view
+///	the LICENSE file that was distributed with this source code.
+////
+
+@charset 'UTF-8'
+
+@use 'sass:math'
+@use 'is-number'
+
+
+/// 
+/// Check if its a percentage value.
+/// 
+/// @param	{Void}	$value	- Value to check.
+/// @return	{Bool}	Return true if value type is percentage.
+/// 
+/// @example	scss
+/// 	@use '@alapnian/sass-modules/meta';
+/// 
+/// 	@mixin example($args...) {
+/// 	  @debug meta.is-percentage($args);								//=> false
+/// 	}
+/// 	@include example(#808080, 100rem);
+/// 	
+/// 	@debug meta.is-percentage(1);									//=> false
+/// 	@debug meta.is-percentage(1px);									//=> false
+/// 	@debug meta.is-percentage(1em);									//=> false
+/// 	@debug meta.is-percentage(1%);									//=> true
+/// 	@debug meta.is-percentage(1dpi);								//=> false
+/// 	@debug meta.is-percentage(1ms);									//=> false
+/// 	@debug meta.is-percentage(1deg);								//=> false
+/// 	@debug meta.is-percentage(1Hz);									//=> false
+/// 	@debug meta.is-percentage(0.5);									//=> false
+/// 	@debug meta.is-percentage(1 2 3);								//=> false
+/// 	@debug meta.is-percentage(top);									//=> false
+/// 	@debug meta.is-percentage(pi);									//=> false
+/// 	@debug meta.is-percentage('kHz');								//=> false
+/// 	@debug meta.is-percentage('');									//=> false
+/// 	@debug meta.is-percentage(());									//=> false
+/// 	@debug meta.is-percentage(null);								//=> false
+/// 	@debug meta.is-percentage(#fff);								//=> false
+/// 	@debug meta.is-percentage(rgb(0,0,0));								//=> false
+/// 	@debug meta.is-percentage(true);								//=> false
+/// 	@debug meta.is-percentage(calc(2/2));								//=> false
+/// 	@debug meta.is-percentage(calc(pi));								//=> false
+/// 	@debug meta.is-percentage(clamp(1rem, 2.5vw, 2rem));						//=> false
+/// 	@debug meta.is-percentage(meta.module-variables(meta));						//=> false
+/// 	@debug meta.is-percentage(meta.get-function('call', $module: meta));				//=> false
+/// 	@debug meta.is-percentage(('color':hsl(97, 98%, 77%), width: 1rem, order: 2, hover: true));	//=> false
+/// 	@debug meta.is-percentage(meta.get-mixin(example));						//=> false
+/// 
+/// @access	public
+/// @require	is-number.is-number
+/// @require	math.unit
+/// 
+/// @group	SassMetaModule
+/// @author	Dyon Mulya
+/// @since	1.0.0
+/// 
+@function is-percentage($value)
+	@return is-number.is-number($value) and math.unit($value) == '%'
